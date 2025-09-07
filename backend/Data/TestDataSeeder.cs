@@ -6,11 +6,10 @@ public static class TestDataSeeder
 {
     public static async Task SeedTestArticles(ApplicationDbContext context)
     {
-        // Always clear and re-seed for development to ensure we have the latest test data
+        // Only seed if no articles exist (preserve existing data)
         if (context.Articles.Any())
         {
-            context.Articles.RemoveRange(context.Articles);
-            await context.SaveChangesAsync();
+            return; // Articles already exist, don't delete them
         }
 
         // Find specific categories by name

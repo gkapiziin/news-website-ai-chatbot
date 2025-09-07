@@ -120,9 +120,9 @@ using (var scope = app.Services.CreateScope())
         context.Database.EnsureCreated();
         logger.LogInformation("Database created successfully");
         
-        // Seed test articles
-        await NewsWebsite.API.Data.TestDataSeeder.SeedTestArticles(context);
-        logger.LogInformation("Test articles seeded successfully");
+        // Seed test articles (DISABLED to preserve real articles)
+        // await NewsWebsite.API.Data.TestDataSeeder.SeedTestArticles(context);
+        // logger.LogInformation("Test articles seeded successfully");
         
         // Create admin user if it doesn't exist
         var adminEmail = "admin@newswebsite.com";
