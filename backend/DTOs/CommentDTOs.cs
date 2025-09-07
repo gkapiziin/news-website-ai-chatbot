@@ -8,16 +8,27 @@ namespace NewsWebsite.API.DTOs
         public string Content { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public UserDto User { get; set; } = null!;
+        public string UserId { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
+        public string UserEmail { get; set; } = string.Empty;
+        public int ArticleId { get; set; }
+        public UserDto User { get; set; } = new UserDto();
     }
 
     public class CreateCommentDto
     {
-        [Required(ErrorMessage = "Comment content is required")]
-        [StringLength(1000, ErrorMessage = "Comment cannot exceed 1000 characters")]
+        [Required]
+        [MaxLength(1000)]
         public string Content { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Article ID is required")]
+        [Required]
         public int ArticleId { get; set; }
+    }
+
+    public class UpdateCommentDto
+    {
+        [Required]
+        [MaxLength(1000)]
+        public string Content { get; set; } = string.Empty;
     }
 }

@@ -13,11 +13,21 @@ namespace NewsWebsite.API.DTOs
 
     public class CreateCategoryDto
     {
-        [Required(ErrorMessage = "Category name is required")]
-        [StringLength(100, ErrorMessage = "Category name cannot exceed 100 characters")]
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
 
-        [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
+        [MaxLength(255)]
+        public string Description { get; set; } = string.Empty;
+    }
+
+    public class UpdateCategoryDto
+    {
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; } = string.Empty;
+
+        [MaxLength(255)]
         public string Description { get; set; } = string.Empty;
     }
 }
